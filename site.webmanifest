@@ -1,0 +1,16 @@
+{
+  "name": "Моника — Холистично изцеление",
+  "short_name": "Моника",
+  "description": "Биоенергийна терапия и холистично изцеление в София",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FAF8F4",
+  "theme_color": "#C4866A",
+  "icons": [
+    {
+      "src": "assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

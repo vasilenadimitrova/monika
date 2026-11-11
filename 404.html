@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>404 — Страницата не е намерена · Моника</title>
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#C4866A">
+<script>try{var l=localStorage.getItem('lang');if(l==='en'){document.documentElement.lang='en';document.documentElement.classList.add('lang-en')}}catch(e){}</script>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<style>
+.error-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 24px;gap:24px}
+.error-code{font-family:var(--serif);font-size:clamp(6rem,18vw,12rem);font-weight:600;color:var(--accent);line-height:1;opacity:.22}
+.error-copy{max-width:440px}
+.error-copy h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:14px}
+.error-copy p{color:var(--text-muted);line-height:1.7;margin-bottom:28px}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">
+  <span data-lang="bg">Прескочи към съдържанието</span>
+  <span data-lang="en">Skip to content</span>
+</a>
+
+<!-- ═══ HEADER ═══ -->
+<header class="site-header" id="site-header">
+  <a class="brand" href="index.html" aria-label="Моника, начало">
+    <span class="brand-mark">М</span>
+    <span data-lang="bg">Моника</span>
+    <span data-lang="en">Monica</span>
+  </a>
+  <nav class="desktop-nav" aria-label="Основна навигация">
+    <a href="index.html#uslugi"><span data-lang="bg">Услуги</span><span data-lang="en">Services</span></a>
+    <a href="index.html#za-men"><span data-lang="bg">За мен</span><span data-lang="en">About</span></a>
+    <a href="blog.html"><span data-lang="bg">Блог</span><span data-lang="en">Blog</span></a>
+    <a href="index.html#kontakti"><span data-lang="bg">Контакти</span><span data-lang="en">Contact</span></a>
+  </nav>
+  <div class="header-right">
+    <div class="lang-sw" aria-label="Избор на език">
+      <button class="lang-btn active" data-lang="bg">BG</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Мобилна навигация" hidden>
+  <a href="index.html#uslugi" class="nav-close"><span data-lang="bg">Услуги</span><span data-lang="en">Services</span></a>
+  <a href="index.html#za-men" class="nav-close"><span data-lang="bg">За мен</span><span data-lang="en">About</span></a>
+  <a href="blog.html"         class="nav-close"><span data-lang="bg">Блог</span><span data-lang="en">Blog</span></a>
+  <a href="index.html#kontakti" class="nav-close"><span data-lang="bg">Контакти</span><span data-lang="en">Contact</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="bg">Български</button>
+    <button class="lang-btn" data-lang="en">English</button>
+  </div>
+</nav>
+
+<main id="main-content">
+  <div class="error-page">
+    <div class="error-code" aria-hidden="true">404</div>
+    <div class="error-copy">
+      <h1>
+        <span data-lang="bg">Страницата не е намерена</span>
+        <span data-lang="en">Page not found</span>
+      </h1>
+      <p data-lang="bg">Търсената страница не съществува или е преместена. Върнете се на началната страница.</p>
+      <p data-lang="en">The page you're looking for doesn't exist or has been moved. Return to the homepage.</p>
+      <a class="btn btn-primary" href="index.html">
+        <span data-lang="bg">Към началото</span>
+        <span data-lang="en">Back to home</span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

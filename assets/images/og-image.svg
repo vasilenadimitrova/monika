@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#FAF8F4"/>
+  <!-- Decorative radial warm glow -->
+  <radialGradient id="glow" cx="65%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#F0DDD4" stop-opacity="1"/>
+    <stop offset="100%" stop-color="#FAF8F4" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- Brand mark circle -->
+  <circle cx="160" cy="315" r="68" fill="#C4866A"/>
+  <text x="160" y="333" text-anchor="middle" font-family="Georgia,serif" font-size="54" font-weight="600" fill="#ffffff">М</text>
+  <!-- Name -->
+  <text x="260" y="295" font-family="Georgia,serif" font-size="72" font-weight="500" fill="#2D2416" letter-spacing="2">Моника</text>
+  <!-- Tagline -->
+  <text x="262" y="355" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="400" fill="#7A6B58" letter-spacing="3">ХОЛИСТИЧНО ИЗЦЕЛЕНИЕ · СОФИЯ</text>
+  <!-- Accent rule -->
+  <rect x="262" y="375" width="120" height="2" fill="#C4866A"/>
+</svg>
