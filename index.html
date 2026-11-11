@@ -174,39 +174,6 @@
 }
 </script>
 
-<!-- ═══ JSON-LD: Reviews ═══ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Review",
-      "@id": "https://ВАШИЯТ-ДОМЕЙН.com/#review-1",
-      "itemReviewed": { "@id": "https://ВАШИЯТ-ДОМЕЙН.com/#business" },
-      "author": { "@type": "Person", "name": "Мария К." },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Преживяването беше изключително. Почувствах разлика от първата сесия — телесна лекота, която не бях усещала от дълго."
-    },
-    {
-      "@type": "Review",
-      "@id": "https://ВАШИЯТ-ДОМЕЙН.com/#review-2",
-      "itemReviewed": { "@id": "https://ВАШИЯТ-ДОМЕЙН.com/#business" },
-      "author": { "@type": "Person", "name": "Стефан П." },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Скептичен бях в началото, но резултатите говорят сами. Препоръчвам на всеки с хронично напрежение или тревожност."
-    },
-    {
-      "@type": "Review",
-      "@id": "https://ВАШИЯТ-ДОМЕЙН.com/#review-3",
-      "itemReviewed": { "@id": "https://ВАШИЯТ-ДОМЕЙН.com/#business" },
-      "author": { "@type": "Person", "name": "Ивана Д." },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Работи с внимание и дълбоко разбиране. Обучението по биоенерготерапия промени начина, по който виждам собственото си тяло."
-    }
-  ]
-}
-</script>
-
 <!-- Anti-FOUC: set lang class before first paint -->
 <script>try{var l=localStorage.getItem('lang');if(l==='en'){document.documentElement.lang='en';document.documentElement.classList.add('lang-en')}}catch(e){}</script>
 <link rel="preload" href="assets/fonts/CG-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -284,15 +251,12 @@
           <span data-lang="en">A personal approach to your physical, energetic and spiritual wellbeing. In-person sessions in Sofia and online.</span>
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#uslugi">
-            <span data-lang="bg">Услуги</span><span data-lang="en">Services</span>
-          </a>
-          <a class="btn btn-outline" href="#sabitiya">
-            <span data-lang="bg">Предстоящи събития</span><span data-lang="en">Upcoming Events</span>
-          </a>
-          <a class="btn btn-dark" href="#kontakti">
+          <a class="btn btn-primary" href="#kontakti" data-intent="booking">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-5 4h2"/></svg>
             <span data-lang="bg">Запишете час</span><span data-lang="en">Book a Session</span>
+          </a>
+          <a class="btn btn-outline" href="#uslugi">
+            <span data-lang="bg">Вижте услугите</span><span data-lang="en">View Services</span>
           </a>
         </div>
       </div>
@@ -336,73 +300,64 @@
       <span class="eyebrow"><span data-lang="bg">Какво предлагам</span><span data-lang="en">What I offer</span></span>
       <h2 id="svc-heading"><span data-lang="bg">Услуги</span><span data-lang="en">Services</span></h2>
     </div>
-    <div class="services-carousel reveal" id="carousel-region" role="region" aria-roledescription="carousel" aria-labelledby="svc-heading">
-      <div id="svc-live" class="carousel-live" aria-live="polite" aria-atomic="true"></div>
-      <div class="carousel-wrap">
-        <div class="carousel-track" id="svc-track">
+    <div class="services-grid reveal">
 
-          <article class="svc-card" role="group" aria-roledescription="slide">
-            <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#D4E0C8,#8FA68B)"></div></div>
-            <div class="card-body">
-              <h3><a href="#kontakti"><span data-lang="bg">Биоенергийна терапия</span><span data-lang="en">Bioenergy Therapy</span></a></h3>
-              <span class="card-link" aria-hidden="true"><span data-lang="bg">Научете повече</span><span data-lang="en">Learn more</span> →</span>
-            </div>
-          </article>
-
-          <article class="svc-card" role="group" aria-roledescription="slide">
-            <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#DDD4E8,#9B8BAF)"></div></div>
-            <div class="card-body">
-              <h3><a href="#kontakti"><span data-lang="bg">Енергийна операция на аурата</span><span data-lang="en">Aura Energy Operation</span></a></h3>
-              <span class="card-link" aria-hidden="true"><span data-lang="bg">Научете повече</span><span data-lang="en">Learn more</span> →</span>
-            </div>
-          </article>
-
-          <article class="svc-card" role="group" aria-roledescription="slide">
-            <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#F0DDD4,#C4866A)"></div></div>
-            <div class="card-body">
-              <h3><a href="#kontakti"><span data-lang="bg">Изцеление на душата</span><span data-lang="en">Soul Healing</span></a></h3>
-              <span class="card-link" aria-hidden="true"><span data-lang="bg">Научете повече</span><span data-lang="en">Learn more</span> →</span>
-            </div>
-          </article>
-
-          <article class="svc-card" role="group" aria-roledescription="slide">
-            <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#D0E8E4,#6FA0A0)"></div></div>
-            <div class="card-body">
-              <h3><a href="#kontakti"><span data-lang="bg">Комплексно духовно-енергийно изцеление</span><span data-lang="en">Complex Spiritual-Energy Healing</span></a></h3>
-              <span class="card-link" aria-hidden="true"><span data-lang="bg">Научете повече</span><span data-lang="en">Learn more</span> →</span>
-            </div>
-          </article>
-
-          <article class="svc-card" role="group" aria-roledescription="slide">
-            <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#E8E0C8,#B0A06A)"></div></div>
-            <div class="card-body">
-              <h3><a href="#kontakti"><span data-lang="bg">Сертифицирано обучение по биоенерготерапия</span><span data-lang="en">Certified Bioenergy Therapy Training</span></a></h3>
-              <span class="card-link" aria-hidden="true"><span data-lang="bg">Научете повече</span><span data-lang="en">Learn more</span> →</span>
-            </div>
-          </article>
-
-          <article class="svc-card" role="group" aria-roledescription="slide" style="opacity:.7">
-            <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#E4E0DC,#B8B0A8)"></div></div>
-            <div class="card-body">
-              <span class="locked-tag"><span data-lang="bg">Очаквайте скоро</span><span data-lang="en">Coming soon</span></span>
-              <h3><span style="color:var(--text-muted)"><span data-lang="bg">Озонотерапия</span><span data-lang="en">Ozone Therapy</span></span></h3>
-            </div>
-          </article>
-
+      <article class="svc-card">
+        <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#D4E0C8,#8FA68B)"></div></div>
+        <div class="card-body">
+          <h3><span data-lang="bg">Биоенергийна терапия</span><span data-lang="en">Bioenergy Therapy</span></h3>
+          <p class="svc-desc"><span data-lang="bg">Работа с жизнената енергия на тялото за облекчаване на напрежение, болка и умора.</span><span data-lang="en">Work with the body's life energy to ease tension, pain and fatigue.</span></p>
+          <a class="card-link svc-cta" href="#kontakti" data-service="bioenergy" data-intent="booking"><span data-lang="bg">Запишете час</span><span data-lang="en">Book a session</span> →</a>
         </div>
-      </div>
-      <div class="carousel-controls">
-        <button class="c-arrow" id="svc-prev" aria-label="Предишна">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
-        </button>
-        <div class="c-dots" id="svc-dots"></div>
-        <button class="c-arrow" id="svc-next" aria-label="Следваща">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
-        </button>
-      </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#DDD4E8,#9B8BAF)"></div></div>
+        <div class="card-body">
+          <h3><span data-lang="bg">Енергийна операция на аурата</span><span data-lang="en">Aura Energy Operation</span></h3>
+          <p class="svc-desc"><span data-lang="bg">Почистване и укрепване на енергийното поле при емоционално изтощение и повтарящи се блокажи.</span><span data-lang="en">Cleansing and strengthening the energy field for emotional exhaustion and recurring blockages.</span></p>
+          <a class="card-link svc-cta" href="#kontakti" data-service="aura" data-intent="booking"><span data-lang="bg">Запишете час</span><span data-lang="en">Book a session</span> →</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#F0DDD4,#C4866A)"></div></div>
+        <div class="card-body">
+          <h3><span data-lang="bg">Изцеление на душата</span><span data-lang="en">Soul Healing</span></h3>
+          <p class="svc-desc"><span data-lang="bg">Дълбока работа с духовните и емоционални корени на дисбаланса.</span><span data-lang="en">Deep work with the spiritual and emotional roots of imbalance.</span></p>
+          <a class="card-link svc-cta" href="#kontakti" data-service="soul" data-intent="booking"><span data-lang="bg">Запишете час</span><span data-lang="en">Book a session</span> →</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#D0E8E4,#6FA0A0)"></div></div>
+        <div class="card-body">
+          <h3><span data-lang="bg">Комплексно духовно-енергийно изцеление</span><span data-lang="en">Complex Spiritual-Energy Healing</span></h3>
+          <p class="svc-desc"><span data-lang="bg">Трите метода в един разширен сеанс за цялостно възстановяване.</span><span data-lang="en">All three methods in one extended session for complete restoration.</span></p>
+          <a class="card-link svc-cta" href="#kontakti" data-service="complex" data-intent="booking"><span data-lang="bg">Запишете час</span><span data-lang="en">Book a session</span> →</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#E8E0C8,#B0A06A)"></div></div>
+        <div class="card-body">
+          <h3><span data-lang="bg">Сертифицирано обучение по биоенерготерапия</span><span data-lang="en">Certified Bioenergy Therapy Training</span></h3>
+          <p class="svc-desc"><span data-lang="bg">Двудневен сертифициран курс за работа с жизнената енергия.</span><span data-lang="en">A two-day certified course in working with life energy.</span></p>
+          <a class="card-link svc-cta" href="#kontakti" data-service="training" data-intent="booking"><span data-lang="bg">Запитване за курс</span><span data-lang="en">Ask about the course</span> →</a>
+        </div>
+      </article>
+
+      <article class="svc-card soon">
+        <div class="card-img"><div class="card-img-inner" style="background:linear-gradient(135deg,#E4E0DC,#B8B0A8)"></div></div>
+        <div class="card-body">
+          <span class="locked-tag"><span data-lang="bg">Очаквайте скоро</span><span data-lang="en">Coming soon</span></span>
+          <h3><span style="color:var(--text-muted)"><span data-lang="bg">Озонотерапия</span><span data-lang="en">Ozone Therapy</span></span></h3>
+        </div>
+      </article>
+
     </div>
     <div class="section-footer reveal">
-      <a class="btn btn-primary" href="#kontakti">
+      <a class="btn btn-primary" href="#kontakti" data-intent="booking">
         <span data-lang="bg">Запишете час</span><span data-lang="en">Book a session</span>
       </a>
     </div>
@@ -425,7 +380,7 @@
         </div>
         <div class="evt-body">
           <span class="eyebrow">София</span>
-          <h3><a href="#kontakti">
+          <h3><a href="#kontakti" data-service="complex" data-intent="event" data-event="Присъствени сесии — София, 15–17 декември">
             <span data-lang="bg">Присъствени енергийни терапии — София</span>
             <span data-lang="en">In-person Energy Therapy Sessions — Sofia</span>
           </a></h3>
@@ -441,7 +396,7 @@
         </div>
         <div class="evt-body">
           <span class="eyebrow">София</span>
-          <h3><a href="#kontakti">
+          <h3><a href="#kontakti" data-service="training" data-intent="event" data-event="Обучение по биоенерготерапия — 20–21 януари">
             <span data-lang="bg">Обучение по биоенерготерапия</span>
             <span data-lang="en">Bioenergy Therapy Training</span>
           </a></h3>
@@ -456,7 +411,7 @@
         <span class="eyebrow"><span data-lang="bg">Не пропускайте следващото събитие</span><span data-lang="en">Don't miss the next event</span></span>
         <h3><span data-lang="bg">Бъдете сред първите, които ще научат.</span><span data-lang="en">Be among the first to know.</span></h3>
       </div>
-      <a class="btn btn-primary" href="#kontakti">
+      <a class="btn btn-primary" href="#kontakti" data-intent="subscribe">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18c0 0-3-2-3-9"/><path d="M10 21h4"/></svg>
         <span data-lang="bg">Абонирайте се</span><span data-lang="en">Subscribe</span>
       </a>
@@ -605,11 +560,6 @@
   <div class="container">
     <div class="reviews-header reveal">
       <h2 id="rv-heading"><span data-lang="bg">Какво споделят хората</span><span data-lang="en">What people share</span></h2>
-      <div class="reviews-meta">
-        <span>3 <span data-lang="bg">отзива</span><span data-lang="en">reviews</span></span>
-        <span>·</span>
-        <span><span class="star-gold">★</span> <strong>5.0/5</strong></span>
-      </div>
     </div>
     <div class="reviews-grid">
       <blockquote class="rv-card reveal">
@@ -683,6 +633,10 @@
       <form class="contact-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST" id="contact-form" novalidate>
         <!-- Honeypot: hidden from real users, traps bots -->
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <input type="hidden" name="intent" id="cf-intent" value="">
+        <input type="hidden" name="event" id="cf-event" value="">
+
+        <p class="form-context" id="form-context" hidden></p>
 
         <div class="form-row">
           <div class="form-group">
@@ -710,13 +664,13 @@
             <label for="cf-service"><span data-lang="bg">Услуга</span><span data-lang="en">Service</span></label>
             <div class="select-wrap">
               <select id="cf-service" name="service">
-                <option value="">— изберете / select —</option>
-                <option value="bioenergy">Биоенергийна терапия / Bioenergy Therapy</option>
-                <option value="aura">Енергийна операция на аурата / Aura Energy Operation</option>
-                <option value="soul">Изцеление на душата / Soul Healing</option>
-                <option value="complex">Комплексно изцеление / Complex Healing</option>
-                <option value="training">Обучение / Training</option>
-                <option value="other">Друго / Other</option>
+                <option value="" data-bg="— изберете —" data-en="— select —">— изберете / select —</option>
+                <option value="bioenergy" data-bg="Биоенергийна терапия" data-en="Bioenergy Therapy">Биоенергийна терапия / Bioenergy Therapy</option>
+                <option value="aura" data-bg="Енергийна операция на аурата" data-en="Aura Energy Operation">Енергийна операция на аурата / Aura Energy Operation</option>
+                <option value="soul" data-bg="Изцеление на душата" data-en="Soul Healing">Изцеление на душата / Soul Healing</option>
+                <option value="complex" data-bg="Комплексно изцеление" data-en="Complex Healing">Комплексно изцеление / Complex Healing</option>
+                <option value="training" data-bg="Обучение" data-en="Training">Обучение / Training</option>
+                <option value="other" data-bg="Друго" data-en="Other">Друго / Other</option>
               </select>
               <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </div>
@@ -726,7 +680,9 @@
         <div class="form-group">
           <label for="cf-message"><span data-lang="bg">Съобщение</span><span data-lang="en">Message</span> <span class="form-required">*</span></label>
           <textarea id="cf-message" name="message" rows="5" required
-            placeholder="..."
+            data-ph-bg="Разкажете накратко за какво търсите подкрепа…"
+            data-ph-en="Tell me briefly what you're seeking support with…"
+            placeholder="Разкажете накратко за какво търсите подкрепа…"
             aria-required="true" aria-describedby="err-message"></textarea>
           <span class="field-error" id="err-message" role="alert"></span>
         </div>

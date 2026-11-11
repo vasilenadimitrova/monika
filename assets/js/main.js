@@ -12,6 +12,13 @@
     document.querySelectorAll('.lang-btn').forEach(function(b){
       b.classList.toggle('active', b.dataset.lang === l);
     });
+    document.querySelectorAll('#cf-service option[data-bg]').forEach(function(o){
+      o.textContent = l === 'en' ? o.dataset.en : o.dataset.bg;
+    });
+    var msg = document.getElementById('cf-message');
+    if(msg && msg.dataset.phBg){
+      msg.placeholder = l === 'en' ? msg.dataset.phEn : msg.dataset.phBg;
+    }
     localStorage.setItem('lang', l);
   }
 
@@ -83,98 +90,66 @@
     });
   }
 
-  /* ── Services carousel (D6: ARIA, keyboard, inertness, live region) ── */
-  var track   = document.getElementById('svc-track');
-  var dotsEl  = document.getElementById('svc-dots');
-  var liveEl  = document.getElementById('svc-live');
-  var idx     = 0;
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function getVisible(){
-    if(window.innerWidth <= 768)  return 1;
-    if(window.innerWidth <= 1024) return 2;
-    return 3;
-  }
-
-  function getCards(){ return track.querySelectorAll('.svc-card'); }
-
-  function updateInertness(){
-    var cards   = getCards();
-    var visible = getVisible();
-    var start   = idx * visible;
-    cards.forEach(function(card, i){
-      var isVisible = i >= start && i < start + visible;
-      if(isVisible){
-        card.removeAttribute('inert');
-        card.removeAttribute('aria-hidden');
-      } else {
-        card.setAttribute('inert','');
-        card.setAttribute('aria-hidden','true');
-      }
-    });
-  }
-
-  function buildDots(){
-    if(!dotsEl) return;
-    var cards   = getCards();
-    var visible = getVisible();
-    var pages   = Math.ceil(cards.length / visible);
-    dotsEl.innerHTML = '';
-    for(var i = 0; i < pages; i++){
-      var d = document.createElement('button');
-      d.className = 'c-dot' + (i === idx ? ' active' : '');
-      d.setAttribute('aria-label', 'Страница ' + (i + 1));
-      d.dataset.i = i;
-      d.addEventListener('click', function(){ goTo(+this.dataset.i); });
-      dotsEl.appendChild(d);
-    }
-  }
-
-  function goTo(n){
-    var cards   = getCards();
-    var visible = getVisible();
-    var pages   = Math.ceil(cards.length / visible);
-    idx = Math.max(0, Math.min(n, pages - 1));
-    var cardW = cards[0].offsetWidth + 24;
-    track.style.transform = 'translateX(-' + (idx * visible * cardW) + 'px)';
-    dotsEl && dotsEl.querySelectorAll('.c-dot').forEach(function(d, i){
-      d.classList.toggle('active', i === idx);
-    });
-    updateInertness();
-    /* Announce to screen readers */
-    if(liveEl){
-      liveEl.textContent = '';
-      setTimeout(function(){
-        liveEl.textContent = (lang === 'en' ? 'Slide ' : 'Слайд ') + (idx + 1) + ' / ' + pages;
-      }, 50);
-    }
-  }
-
-  if(track){
-    var prevBtn = document.getElementById('svc-prev');
-    var nextBtn = document.getElementById('svc-next');
-    if(prevBtn) prevBtn.addEventListener('click', function(){ goTo(idx - 1); });
-    if(nextBtn) nextBtn.addEventListener('click', function(){ goTo(idx + 1); });
-    buildDots();
-    updateInertness();
-
-    /* Arrow-key navigation when focus is inside the carousel region */
-    var carouselRegion = document.getElementById('carousel-region');
-    if(carouselRegion){
-      carouselRegion.addEventListener('keydown', function(e){
-        if(e.key === 'ArrowLeft' || e.key === 'ArrowRight'){
-          e.preventDefault();
-          goTo(e.key === 'ArrowLeft' ? idx - 1 : idx + 1);
+  /* ── Scroll-spy: highlight active section in desktop nav (F1) ── */
+  var navLinks = document.querySelectorAll('.desktop-nav a[href^="#"]');
+  var spyTargets = [];
+  navLinks.forEach(function(a){
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if(el) spyTargets.push({link:a, el:el});
+  });
+  if(spyTargets.length && 'IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.remove('active'); });
+          var match = spyTargets.filter(function(t){ return t.el === e.target; })[0];
+          if(match) match.link.classList.add('active');
         }
       });
-    }
-
-    window.addEventListener('resize', function(){
-      idx = 0;
-      buildDots();
-      goTo(0);
-    }, {passive:true});
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    spyTargets.forEach(function(t){ spy.observe(t.el); });
   }
+
+  /* ── Intent routing: prefill contact form from service/event CTAs (F17) ── */
+  var serviceSel = document.getElementById('cf-service');
+  var intentEl   = document.getElementById('cf-intent');
+  var eventEl    = document.getElementById('cf-event');
+  var contextEl  = document.getElementById('form-context');
+  var contextMsg = {
+    booking:{bg:'Записвате час. Попълнете данните по-долу и ще се свържа с вас лично.',
+             en:'Booking a session. Fill in the details below and I will contact you personally.'},
+    event:  {bg:'Запитване за събитие. Детайлите са добавени към съобщението ви.',
+             en:'Event enquiry. The details have been added to your message.'},
+    subscribe:{bg:'Абонамент за предстоящи събития. Оставете имейла си по-долу.',
+               en:'Subscribing to upcoming events. Leave your email below.'}
+  };
+
+  function applyContext(intent, ev){
+    if(!contextEl) return;
+    var m = contextMsg[intent];
+    if(m){
+      var txt = lang === 'en' ? m.en : m.bg;
+      if(intent === 'event' && ev){
+        txt = (lang === 'en' ? 'Enquiry about: ' : 'Запитване относно: ') + ev;
+      }
+      contextEl.textContent = txt;
+      contextEl.hidden = false;
+    } else {
+      contextEl.hidden = true;
+    }
+  }
+
+  document.querySelectorAll('[data-intent]').forEach(function(l){
+    l.addEventListener('click', function(){
+      var svc    = l.dataset.service || '';
+      var intent = l.dataset.intent || 'booking';
+      var ev     = l.dataset.event || '';
+      if(serviceSel && svc) serviceSel.value = svc;
+      if(intentEl) intentEl.value = intent;
+      if(eventEl)  eventEl.value = ev;
+      applyContext(intent, ev);
+    });
+  });
 
   /* ── Contact form (D8 a11y validation + Formspree) ── */
   var form      = document.getElementById('contact-form');
@@ -260,6 +235,7 @@
   }
 
   /* ── Scroll reveal (D1: skip if reduced-motion) ── */
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var reveals = document.querySelectorAll('.reveal');
   if(reducedMotion){
     reveals.forEach(function(el){ el.classList.add('visible'); });
